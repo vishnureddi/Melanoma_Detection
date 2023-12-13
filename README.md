@@ -1,49 +1,97 @@
-Melanoma Skin Cancer Detection
-Abstract
-In cancer, there are over 200 different forms. Out of 200, melanoma is the deadliest form of skin cancer. The diagnostic procedure for melanoma starts with clinical screening, followed by dermoscopic analysis and histopathological examination. Melanoma skin cancer is highly curable if it gets identified at the early stages. The first step of Melanoma skin cancer diagnosis is to conduct a visual examination of the skin's affected area. Dermatologists take the dermatoscopic images of the skin lesions by the high-speed camera, which have an accuracy of 65-80% in the melanoma diagnosis without any additional technical support. With further visual examination by cancer treatment specialists and dermatoscopic images, the overall prediction rate of melanoma diagnosis raised to 75-84% accuracy. The project aims to build an automated classification system based on image processing techniques to classify skin cancer using skin lesions images.
+# Melanoma-Detection-using-using-custom-cnn
+>
+> This project uses a custom CNN to detect melanoma in images of skin lesions among 10 classes. The Gradio library is used to create a web app for the model prediction. The model predicts with an 87% accuracy.
 
-Problem Statement
-In the skin biopsy, the dermatologist takes some part of the skin lesion and examines it under the microscope. The current process takes almost a week or more, starting from getting a dermatologist appointment to getting a biopsy report. The aims to shorten the current gap to just a couple of days by providing the predictive model. The approach uses Convolutional Neural Network (CNN) to classify nine types of skin cancer from outlier lesions images. This reduction of a gap has the opportunity to impact millions of people positively.
+## Table of Contents
 
-Motivation
-The overarching goal is to support the efforts to reduce the death caused by skin cancer. The primary motivation that drives the project is to use the advanced image classification technology for the well-being of the people. Computer vision has made good progress in machine learning and deep learning that are scalable across domains.
+- [Melanoma-Detection-using-using-custom-cnn](#melanoma-detection-assignment-using-custom-cnn)
+  - [Table of Contents](#table-of-contents)
+  - [General Information](#general-information)
+    - [Algorithms Used](#algorithms-used)
+    - [Dataset Information](#dataset-information)
+  - [Steps Involved](#steps-involved)
+  - [Results](#results)
+    - [Baseline Model](#baseline-model)
+    - [Augmented Model](#augmented-model)
+    - [Final Model](#final-model)
+- [Conclusion](#conclusion)
+- [Technologies Used](#technologies-used)
+- [Contact](#contact)
+- [License](#license)
 
-Dataset
-The dataset consists of 2357 images of malignant and benign oncological diseases, which were formed from the International Skin Imaging Collaboration (ISIC). All images were sorted according to the classification taken with ISIC, and all subsets were divided into the same number of images.
+<!-- You can include any other section that is pertinent to your problem -->
+
+## General Information
+
+### Algorithms Used
+
+Convolutional Neural Network
+
+### Dataset Information
+
+The dataset consists of 2357 images of malignant and benign oncological diseases, which were formed by the International Skin Imaging Collaboration (ISIC). All images were sorted according to the classification taken with ISIC, and all subsets were divided into the same number of images, with the exception of melanomas and moles, whose images are slightly dominant.
 
 The data set contains the following diseases:
 
-Datasetdf.png
+- Actinic keratosis
+- Basal cell carcinoma
+- Dermatofibroma
+- Melanoma
+- Nevus
+- Pigmented benign keratosis
+- Seborrheic keratosis
+- Squamous cell carcinoma
+- Vascular lesion
 
-DatasetPlot.png
+## Steps Involved
 
-To overcome the issue of class imbalance, used a python package Augmentor (https://augmentor.readthedocs.io/en/master/) to add more samples across all classes so that none of the classes have very few samples.
+- Data Loading
+- Baseline Model Building
+- Training the Model and testing the model
+- Building an augmented model
+- Training the augmented model and testing the model
+- Countering Class Imbalance with augmentor
+- Building the final model
+- Training the final model and testing the model
+- Verifying the model
 
-Sample image from Dataset
-sample image
+## Results
 
-CNN Architecture Design
-To classify skin cancer using skin lesions images. To achieve higher accuracy and results on the classification task, I have built custom CNN model.
+### Baseline Model
 
-Rescalling Layer - To rescale an input in the [0, 255] range to be in the [0, 1] range.
-Convolutional Layer - Convolutional layers apply a convolution operation to the input, passing the result to the next layer. A convolution converts all the pixels in its receptive field into a single value. For example, if you would apply a convolution to an image, you will be decreasing the image size as well as bringing all the information in the field together into a single pixel.
-Pooling Layer - Pooling layers are used to reduce the dimensions of the feature maps. Thus, it reduces the number of parameters to learn and the amount of computation performed in the network. The pooling layer summarises the features present in a region of the feature map generated by a convolution layer.
-Dropout Layer - The Dropout layer randomly sets input units to 0 with a frequency of rate at each step during training time, which helps prevent overfitting.
-Flatten Layer - Flattening is converting the data into a 1-dimensional array for inputting it to the next layer. We flatten the output of the convolutional layers to create a single long feature vector. And it is connected to the final classification model, which is called a fully-connected layer.
-Dense Layer - The dense layer is a neural network layer that is connected deeply, which means each neuron in the dense layer receives input from all neurons of its previous layer.
-Activation Function(ReLU) - The rectified linear activation function or ReLU for short is a piecewise linear function that will output the input directly if it is positive, otherwise, it will output zero.The rectified linear activation function overcomes the vanishing gradient problem, allowing models to learn faster and perform better.
-Activation Function(Softmax) - The softmax function is used as the activation function in the output layer of neural network models that predict a multinomial probability distribution. The main advantage of using Softmax is the output probabilities range. The range will 0 to 1, and the sum of all the probabilities will be equal to one.
-Model Architecture
-Model Arch
+Accuracy and Loss charts for the baseline model
+![Alt text](Baseline%20model.png)
 
-Model Evaluation
-ModelEvaluation
+### Augmented Model
 
-References
-Melanoma Skin Cancer from https://www.cancer.org/cancer/melanoma-skin-cancer/about/what-is-melanoma.html
+Accuracy and Loss charts for the augmented model
+![Alt text](Augmented%20model.png)
 
-Introduction to CNN from https://www.analyticsvidhya.com/blog/2021/05/convolutional-neural-networks-cnn/
+### Final Model
 
-Image classification using CNN from https://www.analyticsvidhya.com/blog/2020/02/learn-image-classification-cnn-convolutional-neural-networks-3-datasets/
+Accuracy and Loss charts for the final model
+![Alt text](Final%20model.png)
 
-Efficient way to build CNN architecture from https://towardsdatascience.com/a-guide-to-an-efficient-way-to-build-neural-network-architectures-part-ii-hyper-parameter-42efca01e5d7
+# Conclusion
+
+As the accuracy of the model increases, the loss decreases. The final model has an accuracy of 87% and a loss of 0.3. The model is able to predict the class of the lesion with a high accuracy.
+Augmenting the data and countering class imbalance helped in improving the accuracy of the model.
+
+# Technologies Used
+
+- Python
+- Tensorflow
+- Keras
+- Augmentor
+- Matplotlib
+- NumPy
+
+# Contact
+
+Created by [@sukhijapiyush] - feel free to contact me!
+
+# License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
